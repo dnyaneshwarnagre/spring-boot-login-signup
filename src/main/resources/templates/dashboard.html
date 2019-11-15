@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+</head>
+
+<body>
+
+    <form th:action="@{/logout}" method="get" class="pull-right">
+	        <button class="btn btn-md btn-danger btn-block" name="registration"
+	                type="Submit">Logout
+	        </button>
+    </form>
+
+<div class="container">
+	<div>
+			<h2>User List</h2>	
+	</div>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+           <thead>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Active</th>
+               <th>Education</th>
+               <th>Phone</th>
+               <th>Address</th>
+               <th>Company</th>
+            </tr>
+        </thead>
+         <tbody>
+					<th:block th:each="user:${lists}">
+						<tr>
+							<td th:text="${user.email}">...</td>
+							<td th:text="${user.name}">...</td>
+							<td th:text="${user.active}">...</td>
+							<td th:text="${user.education}">...</td>
+							<td th:text="${user.phone}">...</td>
+							<td th:text="${user.address}">...</td>
+							<td th:text="${user.company}">...</td>
+						</tr>
+					</th:block>
+            </tbody>
+
+	   </table>
+	<div class="panel panel-primary">
+		<p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+	</div>
+</div>
+</body>
+</html>
